@@ -24,8 +24,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: '`user`')]
 #[ApiResource(
     operations: [
-        new Get(),
-        new GetCollection(),
+        new Get(
+            security: "is_granted('ROLE_ADMIN') or object.owner == user"
+        ),
+        new GetCollection(
+            security: "is_granted('ROLE_ADMIN')"
+        ),
         new Post(
             denormalizationContext: ['groups' => ['user:write:create']],
             validationContext: ['groups' => ['Default', 'user:validate:create']],
@@ -33,9 +37,12 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write:update']],
+            security: "is_granted('ROLE_ADMIN') or object.owner == user",
             processor: UserPasswordHasher::class
         ),
-        new Delete()
+        new Delete(
+            security: "is_granted('ROLE_ADMIN') or object.owner == user"
+        )
     ],
     normalizationContext: ['groups' => ['user:read']],
 )]
