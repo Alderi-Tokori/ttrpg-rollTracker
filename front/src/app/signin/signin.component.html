@@ -1,43 +1,52 @@
 <mat-card id="signin-card">
   <mat-card-header>
-    <mat-card-title>signin.card.title</mat-card-title>
-    <mat-card-subtitle>signin.card.subtitle</mat-card-subtitle>
+    <mat-card-title>{{'signin.card.title' | translate}}</mat-card-title>
+    <mat-card-subtitle>{{'signin.card.subtitle' | translate}}</mat-card-subtitle>
   </mat-card-header>
   <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
       <mat-form-field class="w-full">
-        <mat-label>signin.form.email.label</mat-label>
+        <mat-label>{{'signin.form.email.label' | translate}}</mat-label>
         <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
                placeholder="pat@example.com">
         @if (signinForm.get('email')!.hasError('required')) {
-        <mat-error>signin.form.email.error.required</mat-error>
+        <mat-error>{{'signin.form.email.error.required' | translate}}</mat-error>
         }
         @else if (signinForm.get('email')!.hasError('email')) {
-        <mat-error>signin.form.email.error.invalid</mat-error>
+        <mat-error>{{'signin.form.email.error.invalid' | translate}}</mat-error>
         }
       </mat-form-field>
 
       <mat-form-field class="w-full">
-        <mat-label>signin.form.password.label</mat-label>
+        <mat-label>{{'signin.form.password.label' | translate}}</mat-label>
         <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
         <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         @if (signinForm.get('password')!.hasError('required')) {
-        <mat-error>signin.form.password.error.required</mat-error>
+        <mat-error>{{'signin.form.password.error.required' | translate}}</mat-error>
         }
         @else if (signinForm.get('password')!.hasError('minlength')) {
-        <mat-error>signin.form.password.error.minLength</mat-error>
+        <mat-error>{{'signin.form.password.error.minLength' | translate}}</mat-error>
         }
         @else if (signinForm.get('password')!.hasError('maxlength')) {
-        <mat-error>signin.form.password.error.maxLength</mat-error>
+        <mat-error>{{'signin.form.password.error.maxLength' | translate}}</mat-error>
         }
         @else if (signinForm.get('password')!.hasError('pattern')) {
-        <mat-error>signin.form.password.error.pattern</mat-error>
+        <mat-error>{{'signin.form.password.error.pattern' | translate}}</mat-error>
         }
       </mat-form-field>
+      @if (signinForm.get('password')!.hasError('minlength')) {
+      <br><br>
+      }
+      @else if (signinForm.get('password')!.hasError('maxlength')) {
+      <br><br>
+      }
+      @else if (signinForm.get('password')!.hasError('pattern')) {
+      <br><br><br>
+      }
     </mat-card-content>
     <mat-card-actions class="flex justify-around">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!signinForm.valid">signin.form.submit.label</button>
-      <a mat-raised-button color="accent" routerLink="/login">signin.form.cancel.label</a>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signinForm.valid">{{'signin.form.submit.label' | translate}}</button>
+      <a mat-raised-button color="accent" routerLink="/login">{{'signin.form.cancel.label' | translate}}</a>
     </mat-card-actions>
   </form>
 </mat-card>

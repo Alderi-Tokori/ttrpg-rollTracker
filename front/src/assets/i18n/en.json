@@ -1,0 +1,23 @@
+{
+  "login.card.title": "Login",
+  "login.card.subtitle": "Please enter your credentials",
+  "login.form.email.label": "Email",
+  "login.form.email.error.required": "Email is required",
+  "login.form.password.label": "Password",
+  "login.form.password.error.required": "Password is required",
+  "login.form.submit.label": "Login",
+  "login.card.footer.register": "No account yet? Register here",
+
+  "signin.card.title": "Registration",
+  "signin.card.subtitle": "No hassle, just an email and a password",
+  "signin.form.email.label": "Email",
+  "signin.form.email.error.required": "Email is required",
+  "signin.form.email.error.invalid": "Email is invalid",
+  "signin.form.password.label": "Password",
+  "signin.form.password.error.required": "Password is required",
+  "signin.form.password.error.minLength": "Password must be at least 8 characters",
+  "signin.form.password.error.maxLength": "Password must be at most 128 characters",
+  "signin.form.password.error.pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+  "signin.form.submit.label": "Register",
+  "signin.form.cancel.label": "Cancel"
+}

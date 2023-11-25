@@ -1,0 +1,23 @@
+{
+  "login.card.title": "Connexion",
+  "login.card.subtitle": "Connectez-vous pour accéder à votre espace",
+  "login.form.email.label": "Email",
+  "login.form.email.error.required": "Email requis",
+  "login.form.password.label": "Mot de passe",
+  "login.form.password.error.required": "Mot de passe requis",
+  "login.form.submit.label": "Se connecter",
+  "login.card.footer.register": "Pas de compte ? Inscrivez-vous !",
+
+  "signin.card.title": "Inscription",
+  "signin.card.subtitle": "Pas de chichi, on a juste besoin d'un email et d'un mot de passe",
+  "signin.form.email.label": "Email",
+  "signin.form.email.error.required": "Email requis",
+  "signin.form.email.error.invalid": "Email invalide",
+  "signin.form.password.label": "Mot de passe",
+  "signin.form.password.error.required": "Mot de passe requis",
+  "signin.form.password.error.minLength": "Le mot de passe doit contenir au moins 8 caractères",
+  "signin.form.password.error.maxLength": "Le mot de passe doit contenir au maximum 128 caractères",
+  "signin.form.password.error.pattern": "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
+  "signin.form.submit.label": "S'inscrire",
+  "signin.form.cancel.label": "Annuler"
+}
