@@ -65,7 +65,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[Groups(['user:write:create'])]
     #[SerializedName('password')]
-    #[Assert\NotBlank(groups: ['user:validate:create'])]
+    #[Assert\NotBlank(
+        message: 'signin.form.password.error.required',
+        groups: ['user:validate:create']
+    )]
+    #[Assert\Length(
+        min: 8, max: 128,
+        minMessage: 'signin.form.password.error.minLength',
+        maxMessage: 'signin.form.password.error.maxLength',
+        groups: ['user:validate:create']
+    )]
+    #[Assert\Regex(
+        pattern: '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/',
+        message: 'signin.form.password.error.pattern',
+        groups: ['user:validate:create']
+    )]
     private ?string $plainPassword = null;
 
     #[ORM\Column]
@@ -75,7 +89,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\PasswordStrength(minScore: PasswordStrength::STRENGTH_STRONG)]
     private ?string $password = null;
 
     public function getId(): ?Uuid

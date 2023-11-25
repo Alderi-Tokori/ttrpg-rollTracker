@@ -6,37 +6,28 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <mat-form-field class="w-full">
-          <mat-label>login.email.label</mat-label>
+          <mat-label>login.form.email.label</mat-label>
           <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
                  placeholder="pat@example.com">
           @if (loginForm.get('email')!.hasError('required')) {
-          <mat-error>login.email.error.required</mat-error>
-          }
-          @else if (loginForm.get('email')!.hasError('email')) {
-          <mat-error>login.email.error.invalid</mat-error>
+          <mat-error>login.form.email.error.required</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field class="w-full">
-          <mat-label>login.password.label</mat-label>
+          <mat-label>login.form.password.label</mat-label>
           <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
           <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           @if (loginForm.get('password')!.hasError('required')) {
-          <mat-error>login.password.error.required</mat-error>
-          }
-          @else if (loginForm.get('password')!.hasError('minlength')) {
-          <mat-error>login.password.error.minLength</mat-error>
-          }
-          @else if (loginForm.get('password')!.hasError('maxlength')) {
-          <mat-error>login.password.error.maxLength</mat-error>
-          }
-          @else if (loginForm.get('password')!.hasError('pattern')) {
-          <mat-error>login.password.error.pattern</mat-error>
+          <mat-error>login.form.password.error.required</mat-error>
           }
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions class="flex justify-center">
       <button mat-raised-button type="submit" [disabled]="!loginForm.valid">login.form.submit.label</button>
     </mat-card-actions>
+    <mat-card-footer class="flex justify-center">
+      <a mat-button routerLink="/register">login.card.footer.register</a>
+    </mat-card-footer>
   </form>
 </mat-card>
