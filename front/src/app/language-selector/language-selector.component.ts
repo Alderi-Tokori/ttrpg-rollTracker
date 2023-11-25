@@ -17,7 +17,6 @@ export class LanguageSelectorComponent {
   constructor(translate: TranslateService) {
     this.translate = translate;
 
-    translate.setDefaultLang('fr');
-    translate.use('fr');
+    translate.use(localStorage.getItem('language') || 'fr');
   }
 }

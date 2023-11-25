@@ -19,5 +19,6 @@ export class LanguageFlagComponent {
 
   onClick() {
     this.translate.use(this.language);
+    localStorage.setItem('language', this.language);
   }
 }

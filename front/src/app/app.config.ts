@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(HttpClientModule),
     importProvidersFrom(TranslateModule.forRoot(
       {
-        defaultLanguage: 'fr',
+        defaultLanguage: localStorage.getItem('language') || 'fr',
         loader: {
           provide: TranslateLoader,
           useFactory: (HttpLoaderFactory),
