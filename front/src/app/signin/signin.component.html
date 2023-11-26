@@ -45,7 +45,14 @@
       }
     </mat-card-content>
     <mat-card-actions class="flex justify-around">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!signinForm.valid">{{'signin.form.submit.label' | translate}}</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="(!signinForm.valid) || submitting">
+        <div class="flex">
+          @if (submitting) {
+          <span class="mr-2"><mat-spinner diameter="20"></mat-spinner></span>
+          }
+          {{'signin.form.submit.label' | translate}}
+        </div>
+      </button>
       <a mat-raised-button color="accent" routerLink="/login">{{'signin.form.cancel.label' | translate}}</a>
     </mat-card-actions>
   </form>

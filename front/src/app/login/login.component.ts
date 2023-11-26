@@ -8,11 +8,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, MatCardModule, ReactiveFormsModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, TranslateModule],
+  imports: [CommonModule, MatCardModule, ReactiveFormsModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, TranslateModule, MatProgressSpinnerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -25,9 +26,14 @@ export class LoginComponent {
   matcher = new ShowOnDirtyErrorStateMatcher();
 
   hidePassword = true;
+  submitting = false;
 
   onSubmit() {
+    this.submitting = true;
+
     // TODO: Use EventEmitter with form value
     console.warn(this.loginForm.value);
+
+    this.submitting = false;
   }
 }

@@ -9,11 +9,12 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-    imports: [CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, ReactiveFormsModule, RouterLink, TranslateModule],
+    imports: [CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, ReactiveFormsModule, RouterLink, TranslateModule, MatProgressSpinnerModule],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.scss'
 })
@@ -31,9 +32,14 @@ export class SigninComponent {
   matcher = new ShowOnDirtyErrorStateMatcher();
 
   hidePassword = true;
+  submitting = false;
 
-  onSubmit() {
+  async onSubmit() {
+    this.submitting = true;
+
     // TODO: Use EventEmitter with form value
     console.warn(this.signinForm.value);
+
+    this.submitting = false
   }
 }
