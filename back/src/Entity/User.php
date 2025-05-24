@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     operations: [
         new Get(
-            security: "is_granted('ROLE_ADMIN') or object.id == user.id"
+            security: "is_granted('ROLE_ADMIN') or object.getId() == user.getId()"
         ),
         new GetCollection(
             security: "is_granted('ROLE_ADMIN')"
@@ -37,11 +37,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write:update']],
-            security: "is_granted('ROLE_ADMIN') or object.id == user.id",
+            security: "is_granted('ROLE_ADMIN') or object.getId() == user.getId()",
             processor: UserPasswordHasher::class
         ),
         new Delete(
-            security: "is_granted('ROLE_ADMIN') or object.id == user.id"
+            security: "is_granted('ROLE_ADMIN') or object.getId() == user.getId()"
         )
     ],
     normalizationContext: ['groups' => ['user:read']],
@@ -52,7 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    private ?Uuid $id;
+    private ?Uuid $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
     #[Groups(['user:read', 'user:write:create', 'user:write:update'])]
