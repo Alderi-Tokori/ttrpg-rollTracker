@@ -64,18 +64,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['user:write:create'])]
     #[SerializedName('password')]
     #[Assert\NotBlank(
-        message: 'signin.form.password.error.required',
+        message: 'signup.form.password.error.required',
         groups: ['user:validate:create']
     )]
     #[Assert\Length(
         min: 8, max: 128,
-        minMessage: 'signin.form.password.error.minLength',
-        maxMessage: 'signin.form.password.error.maxLength',
+        minMessage: 'signup.form.password.error.minLength',
+        maxMessage: 'signup.form.password.error.maxLength',
         groups: ['user:validate:create']
     )]
     #[Assert\Regex(
         pattern: '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/',
-        message: 'signin.form.password.error.pattern',
+        message: 'signup.form.password.error.pattern',
         groups: ['user:validate:create']
     )]
     private ?string $plainPassword = null;

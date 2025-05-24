@@ -12,14 +12,14 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @Component({
-  selector: 'app-signin',
+  selector: 'app-signup',
   standalone: true,
     imports: [CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, ReactiveFormsModule, RouterLink, TranslateModule, MatProgressSpinnerModule],
-  templateUrl: './signin.component.html',
-  styleUrl: './signin.component.scss'
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss'
 })
-export class SigninComponent {
-  signinForm = new FormGroup({
+export class SignupComponent {
+  signupForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
@@ -38,7 +38,7 @@ export class SigninComponent {
     this.submitting = true;
 
     // TODO: Use EventEmitter with form value
-    console.warn(this.signinForm.value);
+    console.warn(this.signupForm.value);
 
     this.submitting = false
   }

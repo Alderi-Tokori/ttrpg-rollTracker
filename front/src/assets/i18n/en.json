@@ -8,16 +8,16 @@
   "login.form.submit.label": "Login",
   "login.card.footer.register": "No account yet? Register here",
 
-  "signin.card.title": "Registration",
-  "signin.card.subtitle": "No hassle, just an email and a password",
-  "signin.form.email.label": "Email",
-  "signin.form.email.error.required": "Email is required",
-  "signin.form.email.error.invalid": "Email is invalid",
-  "signin.form.password.label": "Password",
-  "signin.form.password.error.required": "Password is required",
-  "signin.form.password.error.minLength": "Password must be at least 8 characters",
-  "signin.form.password.error.maxLength": "Password must be at most 128 characters",
-  "signin.form.password.error.pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
-  "signin.form.submit.label": "Register",
-  "signin.form.cancel.label": "Cancel"
+  "signup.card.title": "Registration",
+  "signup.card.subtitle": "No hassle, just an email and a password",
+  "signup.form.email.label": "Email",
+  "signup.form.email.error.required": "Email is required",
+  "signup.form.email.error.invalid": "Email is invalid",
+  "signup.form.password.label": "Password",
+  "signup.form.password.error.required": "Password is required",
+  "signup.form.password.error.minLength": "Password must be at least 8 characters",
+  "signup.form.password.error.maxLength": "Password must be at most 128 characters",
+  "signup.form.password.error.pattern": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+  "signup.form.submit.label": "Register",
+  "signup.form.cancel.label": "Cancel"
 }

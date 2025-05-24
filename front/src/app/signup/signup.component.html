@@ -1,0 +1,59 @@
+<mat-card id="signup-card">
+  <mat-card-header>
+    <mat-card-title>{{'signup.card.title' | translate}}</mat-card-title>
+    <mat-card-subtitle>{{'signup.card.subtitle' | translate}}</mat-card-subtitle>
+  </mat-card-header>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+      <mat-form-field class="w-full">
+        <mat-label>{{'signup.form.email.label' | translate}}</mat-label>
+        <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+               placeholder="pat@example.com">
+        @if (signupForm.get('email')!.hasError('required')) {
+          <mat-error>{{'signup.form.email.error.required' | translate}}</mat-error>
+        }
+        @else if (signupForm.get('email')!.hasError('email')) {
+          <mat-error>{{'signup.form.email.error.invalid' | translate}}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>{{'signup.form.password.label' | translate}}</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" [errorStateMatcher]="matcher">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        @if (signupForm.get('password')!.hasError('required')) {
+          <mat-error>{{'signup.form.password.error.required' | translate}}</mat-error>
+        }
+        @else if (signupForm.get('password')!.hasError('minlength')) {
+          <mat-error>{{'signup.form.password.error.minLength' | translate}}</mat-error>
+        }
+        @else if (signupForm.get('password')!.hasError('maxlength')) {
+          <mat-error>{{'signup.form.password.error.maxLength' | translate}}</mat-error>
+        }
+        @else if (signupForm.get('password')!.hasError('pattern')) {
+          <mat-error>{{'signup.form.password.error.pattern' | translate}}</mat-error>
+        }
+      </mat-form-field>
+      @if (signupForm.get('password')!.hasError('minlength')) {
+        <br><br>
+      }
+      @else if (signupForm.get('password')!.hasError('maxlength')) {
+        <br><br>
+      }
+      @else if (signupForm.get('password')!.hasError('pattern')) {
+        <br><br><br>
+      }
+    </mat-card-content>
+    <mat-card-actions class="flex justify-around">
+      <button mat-raised-button color="primary" type="submit" [disabled]="(!signupForm.valid) || submitting">
+        <div class="flex">
+          @if (submitting) {
+            <span class="mr-2"><mat-spinner diameter="20"></mat-spinner></span>
+          }
+          {{'signup.form.submit.label' | translate}}
+        </div>
+      </button>
+      <a mat-raised-button color="accent" routerLink="/login">{{'signup.form.cancel.label' | translate}}</a>
+    </mat-card-actions>
+  </form>
+</mat-card>
