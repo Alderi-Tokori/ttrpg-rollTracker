@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     operations: [
         new Get(
-            security: "is_granted('ROLE_ADMIN') or object.owner == user"
+            security: "is_granted('ROLE_ADMIN') or object.id == user.id"
         ),
         new GetCollection(
             security: "is_granted('ROLE_ADMIN')"
@@ -37,11 +37,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         ),
         new Patch(
             denormalizationContext: ['groups' => ['user:write:update']],
-            security: "is_granted('ROLE_ADMIN') or object.owner == user",
+            security: "is_granted('ROLE_ADMIN') or object.id == user.id",
             processor: UserPasswordHasher::class
         ),
         new Delete(
-            security: "is_granted('ROLE_ADMIN') or object.owner == user"
+            security: "is_granted('ROLE_ADMIN') or object.id == user.id"
         )
     ],
     normalizationContext: ['groups' => ['user:read']],
