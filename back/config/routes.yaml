@@ -6,5 +6,5 @@ controllers:
 
 # Login route
 auth:
-    path: /auth
+    path: /api/auth
     methods: ['POST']
