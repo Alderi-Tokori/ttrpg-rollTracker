@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
@@ -10,6 +10,7 @@ import {ShowOnDirtyErrorStateMatcher} from "@angular/material/core";
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-signup',
@@ -28,6 +29,8 @@ export class SignupComponent {
       Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).*$/)
     ])
   })
+
+  private http = inject(HttpClient);
 
   matcher = new ShowOnDirtyErrorStateMatcher();
 

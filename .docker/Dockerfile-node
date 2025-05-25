@@ -16,4 +16,4 @@ COPY --chown=node:node front/ ./
 RUN npm cache clean --force
 RUN npm install -g @angular/cli@19
 
-CMD npm i && ng serve --host 0.0.0.0 --port 4200
+CMD npm i && ng serve --host 0.0.0.0 --port 4200 --configuration=development

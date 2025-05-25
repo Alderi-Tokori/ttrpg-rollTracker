@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -25,15 +26,26 @@ export class LoginComponent {
 
   matcher = new ShowOnDirtyErrorStateMatcher();
 
+  private authService = inject(AuthService);
+
   hidePassword = true;
   submitting = false;
 
   onSubmit() {
     this.submitting = true;
 
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
-
-    this.submitting = false;
+    this.authService.login(
+      this.loginForm.value.email ?? '',
+      this.loginForm.value.password ?? '',
+    ).subscribe({
+      next: () => {
+        this.submitting = false;
+        // Redirection ou autre logique après connexion réussie
+      },
+      error: () => {
+        this.submitting = false;
+        // Gestion des erreurs
+      }
+    });
   }
 }

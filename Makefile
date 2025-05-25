@@ -7,6 +7,10 @@ up:
 down:
 	docker-compose down
 
+reset:
+	make down
+	make up
+
 php:
 	docker-compose exec -u 1000 php-fpm bash
 

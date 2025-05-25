@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {TranslateModule} from "@ngx-translate/core";
-import {LanguageSelectorComponent} from "./language-selector/language-selector.component";
+import {LanguageSelectorComponent} from "./components/language-selector/language-selector.component";
 
 @Component({
   selector: 'app-root',
